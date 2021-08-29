@@ -1,12 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  
-</body>
+  <head>
+    <title>Weather Checking App</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
+
+    <!-- BOOTSTRAP CSS -->
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+
+    <!-- CUSTOM CSS -->
+
+    <style>
+      body {
+        background: url(images/bg-image.png) no-repeat;
+        background-size: cover;
+        height: 100vh;
+      }
+
+      #error-message,
+      #main-display {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1 class="text-center text-white mt-5">
+      Enter City Name To Check Weather
+    </h1>
+    <div class="container">
+      <form class="col-md-6 m-auto py-5">
+        <div class="input-group-lg mb-3 d-flex">
+          <input
+            id="weather-input"
+            type="text"
+            class="form-control"
+            placeholder="Enter a location for Weather ..."
+          />
+          <div class="input-group-append">
+            <button
+              type="button"
+              class="btn btn-danger"
+              onclick="loadWeatherData()"
+            >
+              Search
+            </button>
+          </div>
+        </div>
+      </form>
+      <div id="display-aria" class="weather-status text-white text-center">
+        <h2 id="error-message">Please Enter A Valid Name!</h2>
+        <div id="main-display">
+          <img id="icon" src="" alt="" />
+          <h1 id="weather" class="lead"></h1>
+          <h2 id="city-name"></h2>
+          <h4 id="temp-cur"></h4>
+          <div class="d-flex justify-content-around">
+            <h4 id="temp-max"></h4>
+            <h4 id="temp-min"></h4>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CUSTOM JS -->
+
+    <script src="js/script.js"></script>
+  </body>
 </html>

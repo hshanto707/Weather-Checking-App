@@ -11,29 +11,28 @@ const loadWeatherData = () => {
 
   fetch(url)
     .then((res) => res.json())
-    .then((data) => displayWeatherData(data));
+    .then((data) => displayWeatherData(data))
+    .catch((error) => {
+      document.getElementById("error-message").style.display = "block";
+      document.getElementById("main-display").style.display = "none";
+      input.value = "";
+    });
 };
 
 const displayWeatherData = (data) => {
-  if (data.message == "city not found") {
-    document.getElementById('error-message').style.display = 'block';
-    document.getElementById('main-display').style.display = 'none';
-    input.value = "";
-  } else {
-    document.getElementById('error-message').style.display = 'none';
-    document.getElementById('main-display').style.display = 'block';
-    cityName.innerText = `${data.name}, ${data.sys.country}`;
-    icon.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
-    weather.innerText = data.weather[0].main;
-    curTemp.innerText = `Current Temp: ${(data.main.temp - 273.15).toFixed(
-      2
-    )} °C`;
-    maxTemp.innerText = `Maximum Temp: ${(data.main.temp_max - 273.15).toFixed(
-      2
-    )} °C`;
-    minTemp.innerText = `Minimum Temp: ${(data.main.temp_min - 273.15).toFixed(
-      2
-    )} °C`;
-    input.value = "";
-  }
+  document.getElementById("error-message").style.display = "none";
+  document.getElementById("main-display").style.display = "block";
+  cityName.innerText = `${data.name}, ${data.sys.country}`;
+  icon.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+  weather.innerText = data.weather[0].main;
+  curTemp.innerText = `Current Temp: ${(data.main.temp - 273.15).toFixed(
+    2
+  )} °C`;
+  maxTemp.innerText = `Maximum Temp: ${(data.main.temp_max - 273.15).toFixed(
+    2
+  )} °C`;
+  minTemp.innerText = `Minimum Temp: ${(data.main.temp_min - 273.15).toFixed(
+    2
+  )} °C`;
+  input.value = "";
 };
